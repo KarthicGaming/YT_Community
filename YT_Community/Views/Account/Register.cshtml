@@ -1,0 +1,52 @@
+﻿@model User
+<body>
+    <div class="card border-primary mb-4" style="max-width: 100%;">
+        <div class="card-header"><h2>Register</h2></div>
+        <div class="card-body">
+            <form method="post">
+                <div>
+                    <label for="exampleInputName" class="form-label mt-4">Name</label>
+                    <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name" required>
+                </div>
+                <div>
+                    <label for="exampleInputDob" class="form-label mt-4">Date of birth</label>
+                    <input type="date" class="form-control" id="exampleInputDob" placeholder="Enter DOB">
+                </div>
+                <div>
+                    <label for="exampleInputMobile" class="form-label mt-4">Mobile Number</label>
+                    <input type="tel" class="form-control" id="exampleInputMobile" placeholder="Enter mobile number" required>
+                </div>
+                <div>
+                    <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                </div>
+                <div>
+                    <label for="password" class="form-label mt-4">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
+                </div>
+                <div>
+                    <label for="ConfirmPassword" class="form-label mt-4">Re-enter password</label>
+                    <input type="password" class="form-control" id="ConfirmPassword" placeholder="Password" autocomplete="off" required>
+                </div>
+                <div>
+                    <label for="Domain" class="form-label mt-4">Domain</label>
+                    <input type="text" class="form-control" id="Domain" placeholder="Enter Domain" required>
+                </div>
+                <div>
+                    <label for="Description" class="form-label mt-4">Description</label>
+                    <input type="text" class="form-control" id="Description" placeholder="Enter Description" required>
+                </div>
+                <div>
+                    <label for="Url" class="form-label mt-4">VideoLink</label>
+                    <input type="password" class="form-control" id="Url" placeholder="text" autocomplete="off">
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary mt-4">Register</button>
+                    <button type="reset" class="btn btn-primary mt-4">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
