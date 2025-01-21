@@ -36,19 +36,10 @@ namespace YT_Community.Controllers
                 MobileNumber = registerDto.MobileNumber,
                 PasswordHash = registerDto.PasswordHash
             };
-            var video = new VideoLink
-            {
-                VideoLinkId = new Guid(),
-                Domain = registerDto.Domain,
-                Url = registerDto.Url,
-                Description = registerDto.Description,
-                PostedDate = DateTime.Now
-            };
-            user.PasswordHash = PasswordHasher.HashPassword(user, user.PasswordHash );
+            // user.PasswordHash = PasswordHasher.HashPassword(user, registerDto.PasswordHash );
             if (ModelState.IsValid)
             {
                 _context.Users.Add(user);
-                _context.VideoLinks.Add(video);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Login");
             }
@@ -62,20 +53,20 @@ namespace YT_Community.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(string username,string password)
+        public async Task<IActionResult> Login(string username, string password)
         {
             var user = _context.Users.FirstOrDefault(u => u.UserName == username);
             if (user != null)
             {
                 var passwordHasher = new PasswordHasher<User>();
-                var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash,password);
+                var result = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
                 if (result == PasswordVerificationResult.Success)
                 {
                     TempData["Message"] = $"Welcome,{user.UserName}!";
                     return RedirectToAction("Tndex", "VideoLinks");
 
                 }
-                
+
             }
             ModelState.AddModelError("", "Invalid username or password.");
             return View();
