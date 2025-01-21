@@ -5,48 +5,55 @@
         <div class="card-body">
             <form method="post">
                 <div>
-                    <label for="exampleInputName" class="form-label mt-4">Name</label>
-                    <input type="text" class="form-control" id="exampleInputName" placeholder="Enter name" required>
+                    <label for="UserName" class="form-label mt-4">Name</label>
+                    <input type="text" class="form-control" id="UserName" name="UserName" placeholder="Enter name" required />
+                    @* <span asp-validation-for="Name" class="text-danger"></span> *@
                 </div>
                 <div>
-                    <label for="exampleInputDob" class="form-label mt-4">Date of birth</label>
-                    <input type="date" class="form-control" id="exampleInputDob" placeholder="Enter DOB">
+                    <label for="DateOfBirth" class="form-label mt-4">Date of birth</label>
+                    <input type="datetime" class="form-control" id="DateOfBirth" name="DateOfBirth" placeholder="Enter DOB" />
+                    @* <span asp-validation-for="Dob" class="text-danger"></span> *@
                 </div>
                 <div>
-                    <label for="exampleInputMobile" class="form-label mt-4">Mobile Number</label>
-                    <input type="tel" class="form-control" id="exampleInputMobile" placeholder="Enter mobile number" required>
+                    <label for="MobileNumber" class="form-label mt-4">Mobile Number</label>
+                    <input type="tel" class="form-control" id="MobileNumber" name="MobileNumber" placeholder="Enter mobile number" />
+                    @* <span asp-validation-for="Mobile" class="text-danger"></span> *@
                 </div>
                 <div>
-                    <label for="exampleInputEmail1" class="form-label mt-4">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required>
-                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <label for="Email" class="form-label mt-4">Email address</label>
+                    <input type="email" class="form-control" id="Email" name="Email" aria-describedby="emailHelp" placeholder="Enter email" required />
+                    @* <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>  *@
                 </div>
                 <div>
-                    <label for="password" class="form-label mt-4">Password</label>
-                    <input type="password" class="form-control" id="password" placeholder="Password" autocomplete="off" required>
+                    <label for="PasswordHash" class="form-label mt-4">Password</label>
+                    <input type="password" class="form-control" id="PasswordHash" name="PasswordHash" placeholder="Password" autocomplete="off" />
+                    @* <span asp-validation-for="Password" class="text-danger"></span> *@
                 </div>
-                <div>
+@*                 <div>
                     <label for="ConfirmPassword" class="form-label mt-4">Re-enter password</label>
-                    <input type="password" class="form-control" id="ConfirmPassword" placeholder="Password" autocomplete="off" required>
+                    <input type="password" class="form-control" id="ConfirmPassword" name="ConfirmPassword" placeholder="Password" autocomplete="off" required>
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                 </div>
                 <div>
                     <label for="Domain" class="form-label mt-4">Domain</label>
-                    <input type="text" class="form-control" id="Domain" placeholder="Enter Domain" required>
+                    <input type="text" class="form-control" id="Domain" name="Domain" placeholder="Enter Domain" value="@Model.Domain" required>
+                    <span asp-validation-for="Domain" class="text-danger"></span>
                 </div>
                 <div>
                     <label for="Description" class="form-label mt-4">Description</label>
-                    <input type="text" class="form-control" id="Description" placeholder="Enter Description" required>
+                    <input type="text" class="form-control" id="Description" name="Description" placeholder="Enter Description" value="@Model.Description" required>
+                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
                 <div>
                     <label for="Url" class="form-label mt-4">VideoLink</label>
-                    <input type="password" class="form-control" id="Url" placeholder="text" autocomplete="off">
-                </div>
+                    <input type="url" class="form-control" id="Url" name="Url" placeholder="Enter Video Link" value="@Model.Url" autocomplete="off">
+                    <span asp-validation-for="Url" class="text-danger"></span> 
+                </div>*@
                 <div>
                     <button type="submit" class="btn btn-primary mt-4">Register</button>
-                    <button type="reset" class="btn btn-primary mt-4">Cancel</button>
+                    <button type="reset" class="btn btn-secondary mt-4">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
-    
 </body>
