@@ -36,10 +36,19 @@ namespace YT_Community.Controllers
                 MobileNumber = registerDto.MobileNumber,
                 PasswordHash = registerDto.PasswordHash
             };
-           // user.PasswordHash = PasswordHasher.HashPassword(user, registerDto.PasswordHash );
+            var video = new VideoLink
+            {
+                VideoLinkId = new Guid(),
+                Domain = registerDto.Domain,
+                Url = registerDto.Url,
+                Description = registerDto.Description,
+                PostedDate = DateTime.Now
+            };
+            user.PasswordHash = PasswordHasher.HashPassword(user, user.PasswordHash );
             if (ModelState.IsValid)
             {
                 _context.Users.Add(user);
+                _context.VideoLinks.Add(video);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Login");
             }
