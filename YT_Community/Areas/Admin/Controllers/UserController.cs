@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using YT_Community.Models;
-using YT_Community.Models.ModelView;
 using YT_Community.Repository;
 
 namespace YT_Community.Areas.Admin.Controllers
@@ -17,12 +16,12 @@ namespace YT_Community.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            return View(userRepository.GetAll().Result.ToList());
+            return View(userRepository.GetAll().Result);
         }
 
         public async Task<IActionResult> Edit(Guid? guid)
         {
-            if(guid == null)
+            if (guid == null)
             {
                 return NotFound();
             }
@@ -32,41 +31,56 @@ namespace YT_Community.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            var ViewUser = new UserViewModel
-            {
-                UserId = user.UserId,
-                UserName = user.UserName,
-                DateOfBirth = user.DateOfBirth,
-                MobileNumber = user.MobileNumber,
-                Email = user.Email,
-                PasswordHash = user.PasswordHash
-            };
-            return View(ViewUser);
+            return View(user);
         }
         [HttpPost]
-        public IActionResult Edit(UserViewModel user)
+        public IActionResult Edit(User user)
         {
             if (ModelState.IsValid)
             {
-                var ViewUser = new User
-                {
-                    UserName = user.UserName,
-                    DateOfBirth = user.DateOfBirth,
-                    MobileNumber = user.MobileNumber,
-                    Email = user.Email,
-                };
-                userRepository.UpdateUser(ViewUser);
+                userRepository.UpdateUser(user);
                 return RedirectToAction(nameof(Index));
             }
-            return View();
+            return RedirectToAction(nameof(Index));
         }
+        public async Task<IActionResult> Delete(Guid? guid)
+        {
+            if (guid == null)
+            {
+                return NotFound();
+            }
+            var user = await userRepository.GetById(guid);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(user);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult Delete(User user)
+        {
+            if (user != null && ModelState.IsValid)
+            {
+                userRepository.DeleteUser(user);
+                return RedirectToAction(nameof(Index));
+            }
+            return NotFound();
+        }
+
         public IActionResult Create()
         {
-            return View(userRepository.GetAll().Result.ToList());
+            return View();
         }
-        public IActionResult Delete()
+        [HttpPost]
+        public IActionResult Create(User user)
         {
-            return View(userRepository.GetAll().Result.ToList());
+            if (ModelState.IsValid)
+            {
+                userRepository.CreateUser(user);
+                return RedirectToAction(nameof(Index));
+            }
+            return RedirectToAction(nameof(Index));
         }
     }
 }

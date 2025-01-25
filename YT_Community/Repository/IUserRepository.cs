@@ -6,9 +6,8 @@ namespace YT_Community.Repository
     {
         public Task<List<User>> GetAll();
         public Task<User> GetById(Guid? id);
-        public User GetByUserName(string userName);
-        public User GetByEmail(string email);
+        public User CreateUser(User user);
         public User UpdateUser (User user);
-        public User DeleteUser (int id);
+        public User DeleteUser (User user);
     }
 }

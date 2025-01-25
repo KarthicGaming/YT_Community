@@ -1,24 +1,39 @@
 ﻿@model IEnumerable<User>
 @using YT_Community.Models
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile Number</th>
-        </tr>
-    </thead>
-    @foreach (var item in Model)
-    {
-        <tr class="table-light">
-            <td>@item.UserName</td>
-            <td>@item.Email</td>
-            <td>@item.MobileNumber</td>
-            <td><div class="btn-group" role="group">
-                    <a asp-controller="User" asp-action="Edit" asp-route-guid="@item.UserId" class="btn btn-primary btn-dark mx-2">Edit</a>
-                    <a asp-controller="User" asp-action="Delete" class="btn btn-danger mx-2">Delete</a>
-            </div></td>
-        </tr>
-    }
-</table>
+<div class="card border-primary mb-3" style="max-width: 100%;">
+    <div class="card-header">
+        <div class="d-flex">
+            <h3 class="col-10">User</h3>
+            <a asp-controller="User" asp-action="Create" class="btn btn-primary">Create</a>
+        </div>
+    </div>
+    
+        
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr class="table-primary">
+                    <td>@item.UserName</td>
+                    <td>@item.Email</td>
+                    <td>@item.MobileNumber</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-controller="User" asp-action="Edit" asp-route-guid="@item.UserId" class="btn btn-secondary mx-2">Edit</a>
+                            <a asp-controller="User" asp-action="Delete" asp-route-guid="@item.UserId" class="btn btn-danger mx-2">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
