@@ -1,4 +1,6 @@
-﻿namespace YT_Community.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace YT_Community.Models
 {
     public class VideoLink
     {
@@ -8,6 +10,7 @@
         public string Description { get; set; }
         public DateTime PostedDate { get; set; }
         public Guid UserId { get; set; }
+        [ForeignKey("UserId")]
         User User { get; set; }
     }
 }

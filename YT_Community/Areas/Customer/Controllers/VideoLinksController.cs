@@ -2,8 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using YT_Community.DBContext;
 
-namespace YT_Community.Controllers
+namespace YT_Community.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class VideoLinksController : Controller
     {
         private readonly YoutubeCommunityContext _context;

@@ -33,9 +33,14 @@ namespace YT_Community.Repository
             throw new NotImplementedException();
         }
 
-        public User GetById(int id)
+        public async Task<User> GetById(Guid? guid)
         {
-            throw new NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == guid);
+            if (user != null)
+            {
+                return user;
+            }
+            return new User();
         }
 
         public User GetByUserName(string userName)
@@ -45,7 +50,9 @@ namespace YT_Community.Repository
 
         public User UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return user;
         }
     }
 

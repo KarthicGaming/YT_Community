@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Crypto.Generators;
 using YT_Community.DBContext;
 using YT_Community.Models;
-using YT_Community.Models.DTOs;
 
 namespace YT_Community.Controllers
 {
@@ -23,7 +22,7 @@ namespace YT_Community.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterDto registerDto)
+        public async Task<IActionResult> Register(User registerDto)
         {
             var PasswordHasher = new PasswordHasher<User>();
 

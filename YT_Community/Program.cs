@@ -2,6 +2,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Client;
 using YT_Community.DBContext;
 using YT_Community.Repository;
+using Microsoft.AspNetCore.Identity;
+using YT_Community.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -32,6 +34,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{area=Customer}/{controller=Home}/{action=Index}/{id?}");
 
 app.Run();

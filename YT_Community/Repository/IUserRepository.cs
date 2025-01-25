@@ -5,7 +5,7 @@ namespace YT_Community.Repository
     public interface IUserRepository
     {
         public Task<List<User>> GetAll();
-        public User GetById(int id);
+        public Task<User> GetById(Guid? id);
         public User GetByUserName(string userName);
         public User GetByEmail(string email);
         public User UpdateUser (User user);

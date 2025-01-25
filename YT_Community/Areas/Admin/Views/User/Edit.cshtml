@@ -1,0 +1,26 @@
+﻿@using YT_Community.Models.ModelView
+@model UserViewModel
+
+<form method="post">
+    <fieldset>
+        <legend>Edit</legend>
+        <div class="form-label mt-4">
+            <label for="UserName">Name</label>
+            <input type="text" class="form-control" id="UserName" name="UserName" value="@Model.UserName">
+        </div>
+        <div class="form-label mt-4">
+            <label for="UserName">Date Of Birth</label>
+            <input type="date" class="form-control" id="DateOfBirth" name="DateOfBirth" value="@Model.DateOfBirth">
+        </div>
+        <div class="form-label mt-4">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+        </div>
+        <div class="form-label mt-4">
+            <label for="MobileNumber">Mobile Number</label>
+            <input type="number" class="form-control" id="MobileNumber" name="MobileNumber" value="@Model.MobileNumber">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+    </fieldset>
+</form>
