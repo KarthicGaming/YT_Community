@@ -14,9 +14,19 @@ namespace YT_Community.Repository
             _context = context;
         }
 
-        public User DeleteUser(int id)
+        public User CreateUser(User user)
         {
-            throw new NotImplementedException();
+            user.UserId = Guid.NewGuid();
+            _context.Users.Add(user);
+            _context.SaveChanges();
+            return user;
+        }
+
+        public User DeleteUser(User user)
+        {
+            _context.Users.Remove(user);
+            _context.SaveChanges();
+            return user;
         }
 
         public async Task<List<User>> GetAll()
@@ -25,29 +35,24 @@ namespace YT_Community.Repository
             if (users != null && users.Count > 0) {
                 return users;
             }
-            return new List<User> { new() };
+            return [new()];
         }
 
-        public User GetByEmail(string email)
+        public async Task<User> GetById(Guid? guid)
         {
-            throw new NotImplementedException();
-        }
-
-        public User GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public User GetByUserName(string userName)
-        {
-            throw new NotImplementedException();
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.UserId == guid);
+            if (user != null)
+            {
+                return user;
+            }
+            return new User();
         }
 
         public User UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            _context.SaveChanges();
+            return user;
         }
     }
-
-
 }

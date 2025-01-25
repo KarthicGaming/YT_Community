@@ -1,0 +1,27 @@
+﻿@model User
+
+<form method="post">
+    <fieldset>
+        <input asp-for="UserId" hidden />
+        <input asp-for="PasswordHash" hidden />
+        <legend>Delete</legend>
+        <div class="form-label mt-4">
+            <label for="UserName">Name</label>
+            <input type="text" class="form-control" id="UserName" name="UserName" value="@Model.UserName" readonly>
+        </div>
+        <div class="form-label mt-4">
+            <label for="DateOfBirth">Date Of Birth</label>
+            <input type="datetime" class="form-control" id="DateOfBirth" name="DateOfBirth" value="@Model.DateOfBirth" readonly>
+        </div>
+        <div class="form-label mt-4">
+            <label for="Email">Email</label>
+            <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email" readonly>
+        </div>
+        <div class="form-label mt-4">
+            <label for="MobileNumber">Mobile Number</label>
+            <input type="number" class="form-control" id="MobileNumber" name="MobileNumber" value="@Model.MobileNumber" readonly>
+        </div>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+    </fieldset>
+</form>

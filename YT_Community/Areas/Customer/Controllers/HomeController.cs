@@ -4,8 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using YT_Community.DBContext;
 using YT_Community.Models;
 
-namespace YT_Community.Controllers
+namespace YT_Community.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -21,9 +22,9 @@ namespace YT_Community.Controllers
             int count = 0;
             count = _context.VideoLinks.ToList().Count;
             TempData["data"] = count;
-            
+
             return View();
-            
+
         }
 
         public IActionResult Privacy()
