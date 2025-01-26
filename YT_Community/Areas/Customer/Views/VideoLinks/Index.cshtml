@@ -1,22 +1,40 @@
-﻿@using YT_Community.Models
-@model IEnumerable<VideoLink>
+﻿@model IEnumerable<VideoLink>
 
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Title</th>
-            <th scope="col">URL</th>
-            <th scope="col">Posted Date</th>
-        </tr>
-    </thead>
-    @foreach(var item in Model)
-    {
-        <tr class="table">
-            <td>@item.Domain</td>
-            <td>@item.Description</td>
-            <td><a href="@item.Url" target="_blank">Watch</a></td>
-            <td>@item.PostedDate</td>
-        </tr>
-    }
-</table>
+<div class="card border-primary mb-3" style="max-width: 100%;">
+    <div class="card-header">
+        <div class="d-flex">
+            <h3 class="col-10">Video Links</h3>
+            <a asp-controller="VideoLinks" asp-action="Create" class="btn btn-primary">Create</a>
+        </div>
+    </div>
+    <div class="card-body">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">URL</th>
+                    <th scope="col">Posted Date</th>
+                    <th scope="col">User ID</th>
+                    <th scope="col">Options</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr class="table-primary">
+                    <td>@item.Domain</td>
+                    <td>@item.Description</td>
+                    <td><a href="@item.Url" target="_blank">Watch</a></td>
+                    <td>@item.PostedDate</td>
+                    <td>@item.User.UserName</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-controller="VideoLinks" asp-action="Edit" asp-route-guid="@item.VideoLinkId" class="btn btn-secondary mx-2">Edit</a>
+                            <a asp-controller="VideoLinks" asp-action="Delete" asp-route-guid="@item.VideoLinkId" class="btn btn-danger mx-2">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
