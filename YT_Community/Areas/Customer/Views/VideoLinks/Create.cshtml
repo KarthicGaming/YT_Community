@@ -1,0 +1,26 @@
+﻿@model VideoLinkView
+
+<form method="post">
+    <fieldset>
+        <legend>Create</legend>
+        <div class="form-label mt-4">
+            <label asp-for="videoLink.Domain">Domain</label>
+            <input asp-for="videoLink.Domain" class="form-control" />
+        </div>
+        <div class="form-label mt-4">
+            <label asp-for="videoLink.Url">Url</label>
+            <input asp-for="videoLink.Url" class="form-control" />
+        </div>
+        <div class="form-label mt-4">
+            <label asp-for="videoLink.Description">Description</label>
+            <input asp-for="videoLink.Description" class="form-control">
+        </div>
+        <div class="form-label mt-4">
+            <label asp-for="@Model.UserList">UserID</label>
+            <select class="form-select" asp-for="videoLink.UserId" asp-items="@Model.UserList">
+                <option Disabled selected value="">--SelectUser--</option> </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+    </fieldset>
+</form>

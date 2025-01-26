@@ -1,0 +1,26 @@
+﻿@model VideoLink
+
+<form method="post">
+    <fieldset>
+        <input asp-for="VideoLinkId" hidden />
+        <legend>Delete</legend>
+        <div class="form-label mt-4">
+            <label for="Domain">Domain</label>
+            <input type="text" class="form-control" id="Domain" name="Domain" value="@Model.Domain" readonly>
+        </div>
+        <div class="form-label mt-4">
+            <label for="Url">Youtube link</label>
+            <input type="datetime" class="form-control" id="Url" name="Url" value="@Model.Url" readonly>
+        </div>
+        <div class="form-label mt-4">
+            <label for="Description">Description</label>
+            <input type="email" class="form-control" id="Description" name="Description" value="@Model.Description" readonly>
+        </div>
+        <div class="form-label mt-4">
+            <label for="PostedDate">Posted Date</label>
+            <input type="datetime" class="form-control" id="PostedDate" name="PostedDate" value="@Model.PostedDate" readonly>
+        </div>
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <button type="button" class="btn btn-secondary" onclick="window.history.back()">Cancel</button>
+    </fieldset>
+</form>
